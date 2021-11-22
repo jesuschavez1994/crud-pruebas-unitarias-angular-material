@@ -1,0 +1,33 @@
+
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <span>Contact</span>
+    <button mat-icon-button class="example-icon" (click)="openFormModal()">
+        <mat-icon>person_add</mat-icon>
+    </button>
+</mat-toolbar>
+
+
+<mat-progress-bar *ngIf="loadUser" mode="determinate" value="0"></mat-progress-bar>
+<mat-progress-bar *ngIf="loadUser" mode="indeterminate"></mat-progress-bar>
+
+<mat-list role="list">
+    <ng-container *ngFor="let usuario of usuarios">
+
+        <mat-list-item>
+            <mat-icon mat-list-icon>person</mat-icon>
+            <div mat-line>{{ usuario.nombre }}</div>
+            <div mat-line>{{ usuario.correo }}</div>
+            <div mat-line>{{ usuario.role }}</div>
+
+            <button color="primary" mat-icon-button (click)="openFormModal(usuario)">
+                <mat-icon matSuffix>edit</mat-icon>
+            </button>
+            <button color="warn" mat-icon-button (click)="openRemoveConfirmModal(usuario)">
+                <mat-icon matSuffix>delete</mat-icon>
+            </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+    </ng-container>
+    
+</mat-list>
